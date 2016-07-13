@@ -1,0 +1,47 @@
+#database.yml
+
+# To connect Arachni to a fresh Postgres installation do the following:
+#sudo -u postgres psql postgres 
+# \password postgres
+# \q
+# CREATE DATABASE arachni_production TEMPLATE template0;
+# CREATE USER arachni WITH PASSWORD 'secret' CREATEDB;
+#
+# Configure database and get it ready for Arachni
+#./arachni/bin/arachni_web_task db:create
+#./arachni/bin/arachni_web_task db:migrate
+#./arachni/bin/arachni_web_task db:setup
+#
+#   CREATE USER arachni WITH PASSWORD 'secret' CREATEDB;
+#
+# (Update the credentials in both the above SQL query and the bellow settings appropriately.)
+
+development:
+  host: <%= ENV['POSTGRES_HOST'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['POSTGRES_DATABASE'] %>
+  pool: 50
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+
+test: &test
+  host: <%= ENV['POSTGRES_HOST'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['POSTGRES_DATABASE'] %>
+  pool: 50
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+
+production:
+  host: <%= ENV['POSTGRES_HOST'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['POSTGRES_DATABASE'] %>
+  pool: 50
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+
+cucumber:
+  <<: *test
