@@ -46,4 +46,10 @@ Manipulate as required by starting the image using `-e` for example:
 
 `docker run --name arachni --link postgres -e POSTGRES_HOST=localhost -p 9292:9292 treadie/arachni`
 
+## Build
 
+1. Clone repo
+2. Go to repo dir
+3. `docker build -t "treadie/arachni" .`
+4. `docker history treadie/arachni` 
+5. `docker build -t "treadie/arachni:latest" -t "treadie/arachni:1.4-0.5.10" .`
