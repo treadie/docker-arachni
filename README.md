@@ -10,6 +10,7 @@ The default sqlite deployment has many limitations as described on the arachni w
 ## versions
 `treadie/arachni:latest` - arachni framework v1.4 & webui v0.5.10
 `treadie/arachni:1.4-0.5.10` - arachni framework v1.4 & webui v0.5.10
+`treadie/arachni:Nightly` - arachni nightly build (currently only built when required)
 
 ## How
 
@@ -17,22 +18,30 @@ The default sqlite deployment has many limitations as described on the arachni w
 This image relies on a seperate and running postgres instance. The easiest way of doing this is using the official postgres Docker image
 
 Pull postgres
+
 `docker pull postgres`
 
 Configure postgres for arachni
+
 `docker run --name postgres -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=arachni -e POSTGRES_DB=arachni_production -d postgres`
 
 Feel free to manipulate and modify the above command for production environments as you see fit. I plan to create a compose file to automate this whole process, but not there yet.
 
 ### Pull
 To pull this image from the Docker registry, open a shell prompt and enter:
+
 `docker pull treadie/arachni`
 
 ### Usage
 Run a container from the image with the following command:
-`docker run --name arachni --link postgres -p 9292:9292 treadie/arachni`
 
-_note: this will fail to run if the _`arachni_production`_ database has not been setup using _`arachni_web_task db:setup`_ to do this run the following command _`docker run --name arachni --link postgres -p 9292:9292 treadie/arachni '/opt/arachni/bin/arachni_web_task db:setup'`
+`docker run -t --name arachni --link postgres -p 9292:9292 treadie/arachni`
+
+If this is the first time it has been run then starup will throw a warning as the `arachni_production` database has not been setup using `arachni_web_task db:setup` this also means the webui will not load. to resolve this issue, run the following command: 
+
+`docker exec -i /opt/arachni/bin/arachni_web_task db:setup arachni`
+
+_Note: Use the command above with caution. It's designed to setup a clean and default database. if you have scan data in your database and run this command it will be removed!_
 
 ### Database Connection
 The database configuration settings for Arachni are configured by environment variables. By default they have been preconfigured with what comes out of the box from the Arachni developers. The variables of interest for this image are (with their default values):
@@ -44,7 +53,7 @@ The database configuration settings for Arachni are configured by environment va
 
 Manipulate as required by starting the image using `-e` for example:
 
-`docker run --name arachni --link postgres -e POSTGRES_HOST=localhost -p 9292:9292 treadie/arachni`
+`docker run --name arachni --link postgres -e POSTGRES_HOST=server.com -p 9292:9292 treadie/arachni`
 
 ## Build
 
