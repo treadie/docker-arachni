@@ -18,4 +18,4 @@ ADD database.yml /opt/arachni/system/arachni-ui-web/config/database.yml
 
 EXPOSE 9292
 
-CMD ["arachni_web","--host","0.0.0.0"]
+CMD ["arachni_web","--host","0.0.0.0","&"]
