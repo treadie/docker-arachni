@@ -8,9 +8,8 @@ Arachni is a feature-full, modular, high-performance Ruby framework aimed toward
 The default sqlite deployment has many limitations as described on the arachni webui landing page. This image has been preconfigured to used postgres as the dateabase to overcome these limitations.
 
 ## versions
-`treadie/arachni:latest` - arachni framework v1.4 & webui v0.5.10
+`treadie/arachni:latest` - arachni framework v1.5.1 & webui v0.5.12
 `treadie/arachni:1.4-0.5.10` - arachni framework v1.4 & webui v0.5.10
-`treadie/arachni:Nightly` - arachni nightly build (currently only built when required)
 
 ## How
 
