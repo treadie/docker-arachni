@@ -52,8 +52,13 @@ genpass() {
 }
 
 database() {
-    echo "Setting up database..."
-    bin/arachni_web_task db:setup
+    bin/arachni_web_task db:version >/dev/null 2>&1
+
+    if [ $? -ne 0 ];
+    then
+        echo "Setting up database..."
+        bin/arachni_web_task db:setup
+    fi
 }
 
 setpass() {
