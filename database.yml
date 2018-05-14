@@ -17,6 +17,9 @@
 # (Update the credentials in both the above SQL query and the bellow settings appropriately.)
 
 production:
-  adapter: sqlite3
+  adapter: postgresql
+  host: postgres
+  username: arachni
+  database: arachni
+  password: secret
   encoding: unicode
-  database: db/database.sqlite3

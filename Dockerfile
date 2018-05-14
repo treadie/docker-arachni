@@ -22,7 +22,6 @@ RUN tar xf *.tar.gz \
 WORKDIR /arachni
 
 ADD database.yml system/arachni-ui-web/config/database.yml
-RUN bin/arachni_web_task db:setup
 
 ## Startup boot manager
 ADD scripts/startup.sh /startup.sh

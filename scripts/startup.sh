@@ -51,6 +51,11 @@ genpass() {
     cat /dev/urandom | tr -cd 'A-Za-z0-9' | fold -w 20 | head -1
 }
 
+database() {
+    echo "Setting up database..."
+    bin/arachni_web_task db:setup
+}
+
 setpass() {
     echo "Setting up a new password..."
     pass=$(genpass)
@@ -69,6 +74,7 @@ startup() {
     bin/arachni_web --host 0.0.0.0
 }
 
+database
 picture
 logo
 setpass
