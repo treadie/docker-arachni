@@ -16,32 +16,10 @@
 #
 # (Update the credentials in both the above SQL query and the bellow settings appropriately.)
 
-development:
-  host: <%= ENV['POSTGRES_HOST'] %>
-  adapter: postgresql
-  encoding: unicode
-  database: <%= ENV['POSTGRES_DATABASE'] %>
-  pool: 50
-  username: <%= ENV['POSTGRES_USERNAME'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-
-test: &test
-  host: <%= ENV['POSTGRES_HOST'] %>
-  adapter: postgresql
-  encoding: unicode
-  database: <%= ENV['POSTGRES_DATABASE'] %>
-  pool: 50
-  username: <%= ENV['POSTGRES_USERNAME'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-
 production:
-  host: <%= ENV['POSTGRES_HOST'] %>
   adapter: postgresql
+  host: postgres
+  username: arachni
+  database: arachni
+  password: secret
   encoding: unicode
-  database: <%= ENV['POSTGRES_DATABASE'] %>
-  pool: 50
-  username: <%= ENV['POSTGRES_USERNAME'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-
-cucumber:
-  <<: *test
