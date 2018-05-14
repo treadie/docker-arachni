@@ -19,7 +19,7 @@ sudo docker-compose up
 ```
 
 Alternatively, the docker image can be obtained from Docker Hub and run with a configured
-postgres image. The image should linked with the name `postgres`. The database can be run as follows:
+postgres image. The database can be run as follows:
 
 ```
 sudo docker run -d \
@@ -43,7 +43,8 @@ sudo docker run \
 
 ### Credentials
 
-The default administrator account is: admin@admin.admin
+The default administrator account is: `admin@admin.admin`
+
 A new random password will be assigned and displayed in the docker with each boot. 
 
 ## LICENSE
