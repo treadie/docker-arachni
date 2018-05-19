@@ -38,7 +38,7 @@ Run a container from the image with the following command:
 
 If this is the first time it has been run then starup will throw a warning as the `arachni_production` database has not been setup using `arachni_web_task db:setup` this also means the webui will not load. to resolve this issue, run the following command: 
 
-`docker exec -i /opt/arachni/bin/arachni_web_task db:setup arachni`
+`docker exec -i arachni /opt/arachni/bin/arachni_web_task db:setup`
 
 _Note: Use the command above with caution. It's designed to setup a clean and default database. if you have scan data in your database and run this command it will be removed!_
 
